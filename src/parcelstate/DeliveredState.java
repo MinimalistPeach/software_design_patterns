@@ -1,15 +1,17 @@
 package src.parcelstate;
 
+import src.parcel.Parcel;
+
 public class DeliveredState implements ParcelState {
     public String getName() {
         return "Kézbesítve";
     }
 
-    public ParcelState advance() {
+    public void advance(Parcel parcel) {
         throw new IllegalStateException("A csomagot már kézbesítették.");
     }
 
-    public ParcelState cancel() {
+    public void cancel(Parcel parcel) {
         throw new IllegalStateException("A kézbesített csomag nem mondható le.");
     }
 }

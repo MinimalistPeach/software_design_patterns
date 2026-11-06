@@ -1,15 +1,17 @@
 package src.parcelstate;
 
+import src.parcel.Parcel;
+
 public class PackedState implements ParcelState {
     public String getName() {
         return "Csomagolva";
     }
 
-    public ParcelState advance() {
-        return new InTransitState();
+    public void advance(Parcel parcel) {
+        parcel.setState(new InTransitState());
     }
 
-    public ParcelState cancel() {
-        return new CancelledState();
+    public void cancel(Parcel parcel) {
+        parcel.setState(new CancelledState());
     }
 }

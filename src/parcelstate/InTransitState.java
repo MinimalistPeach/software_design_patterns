@@ -1,15 +1,17 @@
 package src.parcelstate;
 
+import src.parcel.Parcel;
+
 public class InTransitState implements ParcelState {
     public String getName() {
         return "Szállítás alatt";
     }
 
-    public ParcelState advance() {
-        return new DeliveredState();
+    public void advance(Parcel parcel) {
+        parcel.setState(new DeliveredState());
     }
 
-    public ParcelState cancel() {
+    public void cancel(Parcel parcel) {
         throw new IllegalStateException("A szállítás alatt lévő csomag már nem mondható le.");
     }
 }

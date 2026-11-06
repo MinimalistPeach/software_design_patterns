@@ -28,14 +28,14 @@ public class Parcel {
     }
 
     public void advance() {
-        changeState(state.advance());
+        state.advance(this);
     }
 
     public void cancel() {
-        changeState(state.cancel());
+        state.cancel(this);
     }
 
-    private void changeState(ParcelState nextState) {
+    public void setState(ParcelState nextState) {
         String previous = state.getName();
         state = nextState;
         for (ParcelObserver observer : observers) {
