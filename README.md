@@ -35,7 +35,7 @@ A `StandardShipping` és az `ExpressShipping` eltérő díjszabást valósít me
 
 A `ParcelState` interfész és az állapotosztályok (`CreatedState`, `PackedState`, `InTransitState`, `DeliveredState`, `CancelledState`) határozzák meg a lehetséges állapotátmeneteket és a lemondás feltételeit.
 
-Az `advance(Parcel parcel)` és `cancel(Parcel parcel)` műveletek paraméterként kapják meg a csomagot. Az állapotosztályok a `parcel.setState(...)` hívással állítják be a következő állapotot. A `Parcel` a műveleteket az aktuális állapotobjektumra delegálja.
+Az állapotobjektumok a konstruktorukban kapják meg a hozzájuk tartozó `Parcel` referenciáját. Az állapotosztályok a `parcel.setState(...)` hívással állítják be a következő állapotot, amelynek szintén átadják a csomag referenciáját.
 
 ### 3. Observer – állapotváltozások követése
 

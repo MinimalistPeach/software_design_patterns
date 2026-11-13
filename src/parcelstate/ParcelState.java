@@ -1,11 +1,9 @@
 package src.parcelstate;
 
-import src.parcel.Parcel;
-
 public interface ParcelState {
     String getName();
 
-    void advance(Parcel parcel);
+    void advance();
 
-    void cancel(Parcel parcel);
+    void cancel();
 }

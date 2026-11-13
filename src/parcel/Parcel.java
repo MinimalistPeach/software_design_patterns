@@ -14,7 +14,7 @@ public class Parcel {
     private final double weightKg;
     private final ShippingStrategy shipping;
     private final List<ParcelObserver> observers = new ArrayList<>();
-    private ParcelState state = new CreatedState();
+    private ParcelState state = new CreatedState(this);
 
     public Parcel(int id, String recipient, double weightKg, ShippingStrategy shipping) {
         this.id = id;
@@ -28,11 +28,11 @@ public class Parcel {
     }
 
     public void advance() {
-        state.advance(this);
+        state.advance();
     }
 
     public void cancel() {
-        state.cancel(this);
+        state.cancel();
     }
 
     public void setState(ParcelState nextState) {
